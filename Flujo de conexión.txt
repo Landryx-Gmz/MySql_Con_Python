@@ -4,6 +4,20 @@ Creamos repositorio GitHub
 Clonamos el repositorio
 Creamos proyecto con pycharm
 Una vez señalado .venv abrimos terminal
-instalamos el conector MySQL con -> pip install mysql-connector-python  
-actualizamos el conector con -> python.exe -m pip install --upgrade pip 
-
+Instalamos el conector MySQL con -> pip install mysql-connector-python  
+Actualizamos el conector con -> python.exe -m pip install --upgrade pip 
+Creamos en nuestro proyecto un objeto para la concexion:
+	personas_db = mysql.connector.connect(  #se importa automáticamente mysql.connector
+	    host='localhost',  # 127.0.0.1
+            user='root',
+            password='admin',
+            database='personas_db'
+	
+	) 
+Ejecutamos las sentencia select para recuperar todo el contenido con variable auxiliar:
+cursor = personas_db.cursor()
+cursor.execute('SELECT * FROM personas');
+resultado = cursor.fetchall()  # metodo que nos devuelve todo los registro de la sentencia
+for persona in resultado:
+    print(persona)
+ 
