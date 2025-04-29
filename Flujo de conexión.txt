@@ -1,0 +1,9 @@
+--------------Flujo de conexión entre MySQL y Python----------------
+
+Creamos repositorio GitHub
+Clonamos el repositorio
+Creamos proyecto con pycharm
+Una vez señalado .venv abrimos terminal
+instalamos el conector MySQL con -> pip install mysql-connector-python  
+actualizamos el conector con -> python.exe -m pip install --upgrade pip 
+
