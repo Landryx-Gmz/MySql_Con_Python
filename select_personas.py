@@ -1,3 +1,5 @@
+# 1.- SELECCIONAR REGISTROS DESDE PYTHON A MYSQL --SENTENCIA SELECT--
+
 import mysql.connector
 
 personas_db = mysql.connector.connect(
@@ -9,7 +11,11 @@ personas_db = mysql.connector.connect(
 
 # ejecutamos la sencia select
 cursor = personas_db.cursor()
-cursor.execute('SELECT * FROM personas');
+cursor.execute('SELECT * FROM personas')
 resultado = cursor.fetchall()  # metodo que nos devuelve todo los registro de la sentencia
 for persona in resultado:
     print(persona)
+
+# Cerramos los recursos
+cursor.close()
+personas_db.close()
