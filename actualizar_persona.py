@@ -10,7 +10,13 @@ personas_db = mysql.connector.connect(
     password='admin',
     database='personas_db'
 )
-# ejecutamos la sencia update
+# Ejecutamos la sencia update
 cursor = personas_db.cursor()
 sentencia_sql = 'UPDATE personas SET nombre =%s, apellido=%s, edad =%s WhERE id=%s'
 valores = ('Victoria', 'Flores', 45, 6)
+cursor.execute(sentencia_sql, valores)
+personas_db.commit()
+print('Se ha modificado la informacion....')
+# Cerramos los recursos
+cursor.close()
+personas_db.close()
