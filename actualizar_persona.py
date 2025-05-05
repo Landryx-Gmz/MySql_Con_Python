@@ -2,8 +2,6 @@
 
 import mysql.connector
 
-from insertar_personas import sentencia_sql
-
 personas_db = mysql.connector.connect(
     host='localhost',  # 127.0.0.1
     user='root',
