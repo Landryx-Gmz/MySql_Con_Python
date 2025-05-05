@@ -1,4 +1,4 @@
-# 3.- ELIMINAR REGISTROS DESDE PYTHON A MYSQL --SENTENCIA UPDATE--
+# 4.- ELIMINAR REGISTROS DESDE PYTHON A MYSQL --SENTENCIA UPDATE--
 
 import mysql.connector
 
@@ -10,6 +10,10 @@ personas_db = mysql.connector.connect(
 )
 # Ejecutamos la sencia delete
 cursor = personas_db.cursor()
-sentencia_sql = 'DELETE FROM persona WHERE id=%s'
-valores = (5,)  # Para que sea una tupla agremgamos una coma al final
+sentencia_sql = 'DELETE FROM personas WHERE id=%s'
+valores = (7,)  # Para que sea una tupla agremgamos una coma al final
 cursor.execute(sentencia_sql, valores)
+personas_db.commit()
+print('Se a eliminado el registro')
+cursor.close()
+personas_db.close()

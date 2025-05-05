@@ -53,7 +53,7 @@ import mysql.connector
 
 
 
----- Ejecutamos la sentecia update para agregar datos a la bd
+---- Ejecutamos la sentecia update para actualizar datos a la bd
 
 Creamos un nuevo archivo (actualizar_personas.py)
 from insertar_personas import sentencia_sql
@@ -75,3 +75,6 @@ print('Se ha modificado la informacion....')
 # Cerramos los recursos
 cursor.close()
 personas_db.close()
+
+
+
