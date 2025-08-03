@@ -13,7 +13,7 @@ cursor = personas_db.cursor()
 # Objeto de sentencia DELETE
 sentencia_sql = 'DELETE FROM personas WHERE id=%s'
 # Proporcionamos el valor en el mismo orden
-valores = (7,)  # Para que sea una tupla agremgamos una coma al final
+valores = (10,)  # Para que sea una tupla agremgamos una coma al final
 # Ejecutamos la sentencia con el objeto de cursor y el metodo execute (senstencia,valores)
 cursor.execute(sentencia_sql, valores)
 # Guardamos en la BD

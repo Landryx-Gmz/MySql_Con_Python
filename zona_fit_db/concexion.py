@@ -1,6 +1,6 @@
 # 1
 from mysql.connector import pooling
-from mysql.connector import Error
+from mysql.connector import Error  # importamos la clase de error para mysql
 
 
 class Conexion:
@@ -15,8 +15,9 @@ class Conexion:
 
     @classmethod
     def obtener_pool(cls):
-        if cls.pool is None:  # se creal el objeto pool
+        if cls.pool is None:  # se creal el objeto pool si es none
             try:
+                # Creacion del objeto de pool
                 cls.pool = pooling.MySQLConnectionPool(
                     pool_name=cls.POOL_NAME,
                     pool_size=cls.POOL_SIZE,
@@ -29,15 +30,17 @@ class Conexion:
                 return cls.pool
             except Error as e:
                 print(f'Ocurrio un error al obterner pool {e}')
+        # Si el objeto pool no es none
         else:
             return cls.pool
 
     @classmethod
     def obtener_conexion(cls):
+        # Retornamos un objeto del tipo pool un objeto de conexion
         return cls.obtener_pool().get_connection()
 
     @classmethod
-    def liberar_conexion(cls, conexion):
+    def liberar_conexion(cls, conexion):  # Recibimos el objeto conexion que ya hemos obtenido
         conexion.close()
 
 
