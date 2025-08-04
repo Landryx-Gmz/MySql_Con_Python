@@ -5,7 +5,7 @@ from mysql.connector import Error  # importamos la clase de error para mysql
 
 class Conexion:
     DATABASE = 'zona_fit_db'
-    USARNAME = 'root'
+    USERNAME = 'root'
     PASSWORD = 'admin'
     DB_PORT = '3306'
     HOST = 'localhost'
@@ -24,7 +24,7 @@ class Conexion:
                     host=cls.HOST,
                     port=cls.DB_PORT,
                     database=cls.DATABASE,
-                    user=cls.USARNAME,
+                    user=cls.USERNAME,
                     password=cls.PASSWORD
                 )
                 return cls.pool
