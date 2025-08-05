@@ -50,12 +50,36 @@ class ClienteDAO:
                 cursor.close()
                 Conexion.liberar_conexion(conexion)
 
+    @classmethod
+    def actualizar(cls, cliente):
+        # Para acutalizar no tiene que tener el valor de Id
+        conxion = None
+        try:
+            conexion = Conexion.obtener_conexion()
+            cursor = conexion.cursor()
+            # Proporcionamos el Id que queremos modificar al final de la lista
+            valores = (cliente.nombre, cliente.apellido, cliente.membresia, cliente.id)
+            cursor.execute(cls.ACTUALIZAR, valores)
+            conexion.commit()
+            return cursor.rowcount
+        except Exception as e:
+            print(f'Error al actualizar un cliente: {e}')
+        finally:
+            if conexion is not None:
+                cursor.close()
+                Conexion.liberar_conexion(conexion)
+
 
 if __name__ == '__main__':
     # Insertar cliente
-    cliente1 = Cliente(nombre='Andy', apellido='Gomez', membresia='300')
-    clientes_insertados = ClienteDAO.insertar(cliente1)
-    print(f'Clientes insertados: {clientes_insertados}')
+    # cliente1 = Cliente(nombre='Andy', apellido='Gomez', membresia='300')
+    # clientes_insertados = ClienteDAO.insertar(cliente1)
+    # print(f'Clientes insertados: {clientes_insertados}')
+
+    # Actualizar cliente
+    cliente_actualizar = Cliente(3, 'Andy', 'Gomez', 400)
+    clientes_actualizados = ClienteDAO.actualizar(cliente_actualizar)
+    print(f'Clientes actualizados: {}')
 
     # Seleccionar los clientes
     clientes = ClienteDAO.seleccionar()
