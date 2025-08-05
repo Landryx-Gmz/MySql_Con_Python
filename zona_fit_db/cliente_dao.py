@@ -7,7 +7,7 @@ from zona_fit_db.conexion import Conexion
 class ClienteDAO:
     SELECCIONAR = 'SELECT * FROM cliente ORDER BY id'
     INSERTAR = 'INSERT INTO cliente(nombre, apellido, membresia) VALUES(%s, %s, %s)'
-    ACTUALIZAR = 'UPDATE clinete SET nombre=%s, apellido=%s, membresia=%s WHERE id=%s'
+    ACTUALIZAR = 'UPDATE cliente SET nombre=%s, apellido=%s, membresia=%s WHERE id=%s'
     ELIMINAR = 'DELETE FROM cliente WHERE id=%s'
 
     @classmethod
@@ -79,7 +79,7 @@ if __name__ == '__main__':
     # Actualizar cliente
     cliente_actualizar = Cliente(3, 'Andy', 'Gomez', 400)
     clientes_actualizados = ClienteDAO.actualizar(cliente_actualizar)
-    print(f'Clientes actualizados: {}')
+    print(f'Clientes actualizados: {clientes_actualizados}')
 
     # Seleccionar los clientes
     clientes = ClienteDAO.seleccionar()
