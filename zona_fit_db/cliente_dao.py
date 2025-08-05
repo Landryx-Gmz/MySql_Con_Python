@@ -32,6 +32,20 @@ class ClienteDAO:
                 Conexion.liberar_conexion(conexion)
         return clientes
 
+    @classmethod
+    def insertar(cls, cliente):
+        conexion = None
+        try:
+            conexion = Conexion.obtener_conexion()
+            cursor = conexion.cursor
+        except Exception as e:
+            print(f'Ocurrio un error al insertar un cliente: {e}')
+        finally:
+            if conexion is not None:
+                cursor.close()
+                Conexion.liberar_conexion(conexion)
+        return clientes
+
 
 if __name__ == '__main__':
     # Seleccionar los clientes
