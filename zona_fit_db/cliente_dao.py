@@ -37,17 +37,26 @@ class ClienteDAO:
         conexion = None
         try:
             conexion = Conexion.obtener_conexion()
-            cursor = conexion.cursor
+            cursor = conexion.cursor()
+            valores = (cliente.nombre, cliente.apellido, cliente.membresia)
+            cursor.execute(cls.INSERTAR, valores)
+            conexion.commit()
+            return cursor.rowcount  # Nos dice cuantos valores se modificaron en la BD
+
         except Exception as e:
             print(f'Ocurrio un error al insertar un cliente: {e}')
         finally:
             if conexion is not None:
                 cursor.close()
                 Conexion.liberar_conexion(conexion)
-        return clientes
 
 
 if __name__ == '__main__':
+    # Insertar cliente
+    cliente1 = Cliente(nombre='Andy', apellido='Gomez', membresia='300')
+    clientes_insertados = ClienteDAO.insertar(cliente1)
+    print(f'Clientes insertados: {clientes_insertados}')
+
     # Seleccionar los clientes
     clientes = ClienteDAO.seleccionar()
     for cliente in clientes:
